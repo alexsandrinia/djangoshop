@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<h3 class="text-center">Личный кабинет пользователя {{ request.user }}</h3>
+<hr>
+<h4 class="text-center">Ваши заказы</h4>
+<table class="table">
+	<tr style="background: lightblue">
+		<td class="text-center">Номер заказа</td>
+		<td class="text-center">Дата заказа</td>
+		<td class="text-center">Статус заказа</td>
+		<td class="text-center">Стоимость заказа</td>
+		<td class="text-center">Детали заказа</td>
+		<td class="text-center"></td>
+	</tr>
+{% for item in order %}
+	<tr>
+		<td class="text-center" style="padding-top: 20px; padding-bottom: 20px;">{{ item.id }}</td>
+		<td class="text-center" style="padding-top: 20px; padding-bottom: 20px;">{{ item.date }}</td>
+		<td class="text-center" style="padding-top: 20px; padding-bottom: 20px;">{{ item.status }}</td>
+		<td class="text-center" style="padding-top: 20px; padding-bottom: 20px;">{{ item.total }}</td>
+		<td class="text-center" style="padding-top: 20px; padding-bottom: 20px;"></td>
+	</tr>
+
+{% endfor %}
+</table>
+{% endblock content %}
